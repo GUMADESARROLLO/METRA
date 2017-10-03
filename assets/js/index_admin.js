@@ -309,7 +309,7 @@ function MUP(key, per, FE, CONTRATO) {
 function getMaster() {
 
     $("#tbl").html('');
-    $("#tbl").html('<table  id="tblMaster" class="table striped compact cellspacing="0"><thead><tr></tr></thead></table>');
+    $("#tbl").html('<table  id="tblMaster" class="table striped compact" cellspacing="0"><thead><tr></tr></thead></table>');
     var data,
         tableName = '#tblMaster',
         columns,
@@ -330,14 +330,14 @@ function getMaster() {
                 "data": data.data,
                 "columns": data.columns,
                 "info": false,
-                "sort":false,
+                "sort":true,
                 "order": [
                     [1, "asc"]
                 ],
                 "pagingType": "full_numbers",
                 "lengthMenu": [
-                    [10, -1],
-                    [10, "Todo"]
+                    [5,10,100, -1],
+                    [5,10,100, "Todo"]
                 ],
                 "language": {
                     "emptyTable": "NO HAY DATOS DISPONIBLES",
@@ -369,7 +369,6 @@ function actualiza() {
             Comnet0:$("#Comnet0").val(),
             com: $("#com").val(),
             pedido:$("#pedido").val(),
-            fecha: $("#fecha").val(),
             pedidomin: $("#pedidomin").val(),
             usuario: $("#usuarioConectado").val()
         };

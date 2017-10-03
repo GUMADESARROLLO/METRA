@@ -50,10 +50,9 @@ class Articulos extends CI_Controller {
         $comentario = $this->input->get_post('Comnet0');
         $cant = $this->input->get_post("pedido");
         $com = $this->input->get_post("com");
-        $fecha = $this->input->get_post("fecha");
         $pedido = $this->input->get_post("pedidomin");
         $usuario = $this->input->get_post("usuario");
-        $this->Table->GuardarComentario($Arti,$comentario,$cant,$com,$fecha, $pedido,$usuario);
+        $this->Table->GuardarComentario($Arti,$comentario,$cant,$com, $pedido,$usuario);
        echo $Arti,$comentario,$cant;
     }
 

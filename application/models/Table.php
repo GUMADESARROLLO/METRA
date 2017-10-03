@@ -59,65 +59,65 @@ class Table extends CI_Model
          foreach($query->result_array() as $fila){
                 $json['data'][$i]['ARTICULO'] = $fila['ARTICULO'];
                 $json['data'][$i]['DESCRIPCION'] = $fila['DESCRIPCION'];
-                $json['data'][$i]['TOTAL_EXISTENCIA'] = number_format($fila['TOTAL_EXISTENCIA'],2);
-                $json['data'][$i]['CLASE_ABC'] = $fila['CLASE_ABC'];
-                $json['data'][$i]['PM6CA'] = number_format(($fila['PM6CA']),2);
-                $json['data'][$i]['PVM_6_PRIVATE'] = number_format($fila['PVM_6_PRIVATE'],2);
-                $json['data'][$i]['PVMP_12'] = number_format( $fila['PVMP_12'],2);
-                $json['data'][$i]['PVM_INP_6'] = number_format( $fila['PVM_INP_6'],2);
-                $json['data'][$i]['PVM_INSP_12M'] = number_format( $fila['PVM_INSP_12M'],2);   
-                $json['data'][$i]['MESES_DISP'] =number_format($fila['Mes_Disponible_6M'],2);
-                $json['data'][$i]['MESES_DISP_MAX'] = $fila['Meses_Disponibles_Max'];
+                $json['data'][$i]['TOTAL_EXISTENCIA'] ="<p class='right'>". number_format($fila['TOTAL_EXISTENCIA'],2)."</p>";
+                $json['data'][$i]['CLASE_ABC'] = "<p class='center'>".$fila['CLASE_ABC']."</p>";
+                $json['data'][$i]['PM6CA'] = "<p class='right'>".number_format(($fila['PM6CA']),2)."</p>";
+                $json['data'][$i]['PVM_6_PRIVATE'] = "<p class='right'>".number_format($fila['PVM_6_PRIVATE'],2)."</p>";
+                $json['data'][$i]['PVMP_12'] = "<p class='right'>".number_format( $fila['PVMP_12'],2)."</p>";
+                $json['data'][$i]['PVM_INP_6'] = "<p class='right'>".number_format( $fila['PVM_INP_6'],2)."</p>";
+                $json['data'][$i]['PVM_INSP_12M'] = "<p class='right'>".number_format( $fila['PVM_INSP_12M'],2)."</p>";   
+                $json['data'][$i]['MESES_DISP'] ="<p class='right'>".number_format($fila['Mes_Disponible_6M'],2)."</p>";
+                $json['data'][$i]['MESES_DISP_MAX'] = "<p class='right'>".$fila['Meses_Disponibles_Max']."</p>";
                 if ($fila['CLASE_ABC'] =="A" || $fila['CLASE_ABC']=="A" && $fila['CLASIFICACION_3'] =="018") {
                     if($fila['Color_Cantidad_Pedir'] == ''){
-                        $json['data'][$i]['Cant_Pedir'] = "<p>".number_format($fila["Cantidad_Pedir"], 0)."</p>";
+                        $json['data'][$i]['Cant_Pedir'] = "<p class='right'>".number_format($fila["Cantidad_Pedir"], 0)."</p>";
                     }else{
-                        $json['data'][$i]['Cant_Pedir'] = "<p style='color:red' class='negra'>" . number_format($fila["Cantidad_Pedir"], 0) ."</p>";
+                        $json['data'][$i]['Cant_Pedir'] = "<p style='color:red' class='negra right'>" . number_format($fila["Cantidad_Pedir"], 0) ."</p>";
                     }
                     
                 }elseif($fila['CLASE_ABC'] == "B"){
                 if ($fila['Color_Cantidad_Pedir'] == '') {
-                    $json['data'][$i]['Cant_Pedir'] = "<p>" . number_format($fila["Cantidad_Pedir"], 0) . "</p>";
+                    $json['data'][$i]['Cant_Pedir'] = "<p class='right'>" . number_format($fila["Cantidad_Pedir"], 0) . "</p>";
                 }
                 else {
-                    $json['data'][$i]['Cant_Pedir'] = "<p style='color:red' class='negra'>" . number_format($fila["Cantidad_Pedir"], 0) . "</p>";
+                    $json['data'][$i]['Cant_Pedir'] = "<p style='color:red' class='negra right'>" . number_format($fila["Cantidad_Pedir"], 0) . "</p>";
                 }
                 }elseif($fila['CLASE_ABC'] == "C"){
                 if ($fila['Color_Cantidad_Pedir'] == '') {
-                    $json['data'][$i]['Cant_Pedir'] = "<p>" . number_format($fila["Cantidad_Pedir"], 0) . "</p>";
+                    $json['data'][$i]['Cant_Pedir'] = "<p class='right'>" . number_format($fila["Cantidad_Pedir"], 0) . "</p>";
                 }
                 else {
-                    $json['data'][$i]['Cant_Pedir'] = "<p style='color:red' class='negra'>" . number_format($fila["Cantidad_Pedir"], 0) . "</p>";
+                    $json['data'][$i]['Cant_Pedir'] = "<p style='color:red' class='negra right'>" . number_format($fila["Cantidad_Pedir"], 0) . "</p>";
                 }
                 }else{
-                    $json['data'][$i]['Cant_Pedir'] = 0;
+                    $json['data'][$i]['Cant_Pedir'] = "<p class='right'>0</p>";
                 }
                       $json['data'][$i]['Pedido'] = 
-                      "<a class='purple-text darken-4 ' href='#' onclick='ModalComentarios(".'"'.$fila['ARTICULO'].'","'.number_format($fila['Pedido'],2).'"'.","."0".")'>
+                      "<a class='purple-text darken-4 right' href='#' onclick='ModalComentarios(".'"'.$fila['ARTICULO'].'","'.number_format($fila['Pedido'],2).'"'.","."0".")'>
                       ".number_format ($fila['Pedido'],2)."</a>"; 
 
                       $json['data'][$i]['Transito'] =  
-                      "<a class='purple-text darken-4' href='#'  onclick='ModalComentarios(".'"'.$fila['ARTICULO'].'","'.number_format($fila['Transito'],2).'"'.","."1".")'>
+                      "<a class='purple-text darken-4 right' href='#'  onclick='ModalComentarios(".'"'.$fila['ARTICULO'].'","'.number_format($fila['Transito'],2).'"'.","."1".")'>
                       ".number_format ($fila['Transito'],2)."</a>"; 
 
                       $json['data'][$i]['Contrato_Anual_CA'] =
-                      "<a class='purple-text darken-4' href='#'onclick='ModalComentarios(".'"'.$fila['ARTICULO'].'","'.number_format($fila['Contrato_Anual_CA'],2).'"'.","."3".")'>
+                      "<a class='purple-text darken-4 right' href='#'onclick='ModalComentarios(".'"'.$fila['ARTICULO'].'","'.number_format($fila['Contrato_Anual_CA'],2).'"'.","."3".")'>
                       ".number_format ($fila['Contrato_Anual_CA'],2)."</a>"; 
                     
                       $json['data'][$i]['Pendiente_Entrega_CA'] = 
-                      "<a class='purple-text darken-4' href='#'onclick='ModalComentarios(".'"'.$fila['ARTICULO'].'","'.number_format($fila['PENDIENTE_ENTREGA'],0).'"'.","."2".")'>".number_format($fila['PENDIENTE_ENTREGA'],0,",","")."</a>";
+                      "<a class='purple-text darken-4 right' href='#'onclick='ModalComentarios(".'"'.$fila['ARTICULO'].'","'.number_format($fila['PENDIENTE_ENTREGA'],0).'"'.","."2".")'>".number_format($fila['PENDIENTE_ENTREGA'],0,",","")."</a>";
                       
-                      $json['data'][$i]['Ordenado_CA'] = number_format ($fila['Ordenado_CA'],2);
+                      $json['data'][$i]['Ordenado_CA'] = "<p class='right'>".number_format ($fila['Ordenado_CA'],2)."</p>";
                       //% de cumplimienmto
                       if($fila['COLOR_CUMPLIMIENTO'] == 'V'){
-                        $json['data'][$i]['CUMPLIMIENTO_CONTRATO_CA'] ="<p style='color:green;' class='negra'>".number_format($fila['CUMPLIMIENTO'], 0) . "%</p>";
+                        $json['data'][$i]['CUMPLIMIENTO_CONTRATO_CA'] ="<p style='color:green;' class='center-align negra'>".number_format($fila['CUMPLIMIENTO'], 0) . "%</p>";
                       }else{
-                        $json['data'][$i]['CUMPLIMIENTO_CONTRATO_CA'] = "<p style='color:red;' class='negra'>" . number_format($fila['CUMPLIMIENTO'], 0) . "%</p>";
+                        $json['data'][$i]['CUMPLIMIENTO_CONTRATO_CA'] = "<p style='color:red;' class='center-align negra'>" . number_format($fila['CUMPLIMIENTO'], 0) . "%</p>";
                       }
                       if($this->session->userdata('Permiso') == 3 && $this->session->userdata('IdUS') != "3"){
                         $json['data'][$i]['PED_MIN'] = $fila['PED_MIN'];
                       }else{
-                        $json['data'][$i]['PED_MIN'] = "<a class='purple-text darken-4' href='#' onclick='ModalComentarios(" . '"' . $fila['ARTICULO'] . '","' . $fila['PED_MIN'] . '"' . "," . "5" . ")'>
+                        $json['data'][$i]['PED_MIN'] = "<a class='purple-text darken-4 right' href='#' onclick='ModalComentarios(" . '"' . $fila['ARTICULO'] . '","' . $fila['PED_MIN'] . '"' . "," . "5" . ")'>
                       " . $fila['PED_MIN'] . "</a>";
                       }
                 $i++;
@@ -125,11 +125,11 @@ class Table extends CI_Model
            
             if($this->session->userdata('Permiso') == 3){
                 $json['columns'][0]['data'] = 'ARTICULO';
-                $json['columns'][0]['name'] = "CODIGO";
+                $json['columns'][0]['name'] = "<p>CODIGO</p>";
                 $json['columns'][1]['data'] = 'DESCRIPCION';
-                $json['columns'][1]['name'] = "DESCRIPCION";
+                $json['columns'][1]['name'] = "<p>DESCRIPCION</p>";
                 $json['columns'][2]['data'] = 'TOTAL_EXISTENCIA';
-                $json['columns'][2]['name'] = "EXISTENCIA ACTUAL";
+                $json['columns'][2]['name'] = "<p>EXISTENCIA ACTUAL</p>";
                 $json['columns'][3]['data'] = "Pedido";
                 $json['columns'][3]['name'] = "PEDIDO";
                 $json['columns'][4]['data'] = "Transito";
@@ -139,11 +139,11 @@ class Table extends CI_Model
                 echo json_encode($json);
             }elseif($this->session->userdata('Permiso') == 2){
                 $json['columns'][0]['data'] = 'ARTICULO';
-                $json['columns'][0]['name'] = "CODIGO";
+                $json['columns'][0]['name'] = "<p>CODIGO</p>";
                 $json['columns'][1]['data'] = 'DESCRIPCION';
                 $json['columns'][1]['name'] = "DESCRIPCION";
                 $json['columns'][2]['data'] = 'TOTAL_EXISTENCIA';
-                $json['columns'][2]['name'] = "EXISTENCIA ACTUAL";
+                $json['columns'][2]['name'] = "<p>EXISTENCIA ACTUAL</p>";
                 $json['columns'][3]['data'] = "Pendiente_Entrega_CA";
                 $json['columns'][3]['name'] = "PENDIENTE ENTREGA CA";
                 $json['columns'][4]['data'] = "Contrato_Anual_CA";
@@ -165,6 +165,7 @@ class Table extends CI_Model
             $json['columns'][5]['data'] = "Transito";
             $json['columns'][5]['name'] = "<p class='tooltipped' data-position='top' data-tooltip='Cantidad de producto ordenado que ya salió de origen'>TRANSITO</p>";
             $json['columns'][6]['data'] = "Pendiente_Entrega_CA";
+
             $json['columns'][6]['name'] = "<p style='width: 124px;' class='tooltipped' data-tooltip='Cantidad producto ordenado por CA, no entregado por falta de existencia' data-position='top'>PENDIENTE ENTREGA CA</p>";
             $json['columns'][7]['data'] = "Contrato_Anual_CA";
             $json['columns'][7]['name'] = "<p style='width: 110px' class='tooltipped' data-tooltip='Cantidad acordada en contrato anual' data-position='top'>"."CONTRATO ANUAL CA"."<br>".""."</p>";
@@ -191,13 +192,14 @@ class Table extends CI_Model
             $json['columns'][17]['name'] = "<p style='width: 63px' class='tooltipped' data-tooltip='Cantidad mínima que se puede pedir' data-position='top'>pedido min.</p>";
             $json['columns'][18]['data'] = "Cant_Pedir";
             $json['columns'][18]['name'] = "<p style='width: 95px' class='tooltipped' data-tooltip='Cantidad a pedir' data-position='top'>cantidad a pedir</p>";
+
             echo json_encode($json);
             }
             //$this->sqlsrv->close();
             
     }
     
-    public function GuardarComentario($Arti,$Coment,$Cant,$IDC,$fecha_contrato, $ped_min, $usuario){
+    public function GuardarComentario($Arti,$Coment,$Cant,$IDC, $ped_min, $usuario){
         $accion="";$tipo="";
         $this->db->where('ARTICULO', $Arti);
         $query = $this->db->get('comentarios');
@@ -232,7 +234,7 @@ class Table extends CI_Model
                     $data = array(
                         'Comnet3' =>  $Coment,
                         'Contrato_Anual_CA' => $Cant,
-                        'Fecha_Contrato' => $fecha_contrato
+                        'Fecha_Contrato' => date("Y") . "-09-01"                        
                     );
                     $accion='Actualizo la cantidad de CONTRATO ANUAL del articulo '.$Arti;
                     $tipo=3;   
@@ -290,7 +292,8 @@ class Table extends CI_Model
                     $data = array(
                         'Articulo' => $Arti,
                         'Comnet3' =>  $Coment,
-                        'Contrato_Anual_CA' => $Cant
+                        'Contrato_Anual_CA' => $Cant,
+                        'Fecha_Contrato' => date("Y")."-09-01"
                     );
                     $accion='Agrego cantidad de CONTRATO ANUAL CA del articulo '.$Arti;
                     $tipo=3;

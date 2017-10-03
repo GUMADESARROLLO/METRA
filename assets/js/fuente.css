@@ -77,6 +77,6 @@ table tr th .sorting_disabled{
   margin-bottom: 20px;
 }
 
-#tblMaster thead tr th{
-  width: 300px;
+thead tr th{
+  width: 100px;
 }

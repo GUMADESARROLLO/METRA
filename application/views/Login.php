@@ -15,8 +15,8 @@
         <div class="card-panel grey lighten-5 z-depth-1 center" >
         	
         	<div class="col s6" >
-			    <h5>Plataforma TWEB, Bienvenido.</h5>
-			    <p>Mercaderia en transito UNIMARK</p>			  
+			    <h5>Plataforma ACG, Bienvenido.</h5>
+			    <p>Modelo  - Analisis de Consumo y ordenes de Compra GUMA</p>
         		
         		<div class="col s3">
 

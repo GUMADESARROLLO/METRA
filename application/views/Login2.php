@@ -14,9 +14,9 @@
 									<div class="card-header">
 										<div class="card-inner">
 											<center>
-												<h5 class="card-heading">Plataforma TWEB, Bienvenido.</h5>
-			    								<p style="margin-bottom:0px !important;">Mercaderia en transito UNIMARK</p>
-			    								<p style="margin-top:0px !important;">v 2.3</p>	
+												<h5 class="card-heading">Plataforma ACG, Bienvenido.</h5>
+			    								<p style="margin-bottom:0px !important;">Analisis de Consumo y ordenes de Compra UNIMARK</p>
+			    								<p style="margin-top:0px !important;">v 2.7.6</p>
 			    										  
 			    							</center>
 										</div>

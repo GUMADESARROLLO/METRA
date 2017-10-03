@@ -1,13 +1,5 @@
 <div class="">
-<script>
-    function change()
-    {
 
-        loc="www.google.com";
-        $('#calendar').attr('src', loc);
-    }
-
-</script>
     <div class="row menu">     
         <?php
         if (!isset($_SESSION['Permiso'])) {          

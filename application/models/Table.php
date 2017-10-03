@@ -52,6 +52,7 @@ class Table extends CI_Model
     {
         //$consulta = "SELECT * FROM WEB_METRA_2";
         //$query = $this->sqlsrv->fetchArray($consulta,SQLSRV_FETCH_ASSOC);
+
         $query = $this->db->query("SELECT * FROM vst_consumo ORDER BY DESCRIPCION ASC");
         $json = array();
         $i = 0;
@@ -156,43 +157,40 @@ class Table extends CI_Model
             $json['columns'][1]['data'] = 'DESCRIPCION';
             $json['columns'][1]['name'] = "DESCRIPCION";
             $json['columns'][2]['data'] = 'TOTAL_EXISTENCIA';
-            $json['columns'][2]['name'] = "EXISTENCIA ACTUAL";
+            $json['columns'][2]['name'] = "<div style='width: 103px;'>EXISTENCIA ACTUAL</div>";
             $json['columns'][3]['data'] = 'CLASE_ABC';
-            $json['columns'][3]['name'] = "clase abc";
+            $json['columns'][3]['name'] = "<div style='width: 57px'>clase abc</div>";
             $json['columns'][4]['data'] = "Pedido";
             $json['columns'][4]['name'] = "<p class='tooltipped' data-position='top' data-tooltip='Cantidad de producto ordenado, no despachado'>PEDIDO</p>";
             $json['columns'][5]['data'] = "Transito";
             $json['columns'][5]['name'] = "<p class='tooltipped' data-position='top' data-tooltip='Cantidad de producto ordenado que ya salió de origen'>TRANSITO</p>";
             $json['columns'][6]['data'] = "Pendiente_Entrega_CA";
-            $json['columns'][6]['name'] = "<p class='tooltipped' data-tooltip='Cantidad producto ordenado por CA, no entregado por falta de existencia' data-position='top'>PENDIENTE ENTREGA CA</p>";
+            $json['columns'][6]['name'] = "<p style='width: 124px;' class='tooltipped' data-tooltip='Cantidad producto ordenado por CA, no entregado por falta de existencia' data-position='top'>PENDIENTE ENTREGA CA</p>";
             $json['columns'][7]['data'] = "Contrato_Anual_CA";
-            $json['columns'][7]['name'] = "<p class='tooltipped' data-tooltip='Cantidad acordada en contrato anual' data-position='top'>"."CONTRATO ANUAL "."<br>"."CA"."</p>";
+            $json['columns'][7]['name'] = "<p style='width: 110px' class='tooltipped' data-tooltip='Cantidad acordada en contrato anual' data-position='top'>"."CONTRATO ANUAL CA"."<br>".""."</p>";
             $json['columns'][8]['data'] = "Ordenado_CA";
-            $json['columns'][8]['name'] = "<p class='tooltipped' data-tooltip='Cantidad ordenada del 1/Sept a la fecha' data-position='top'>ORDENADO CA</p>";
+            $json['columns'][8]['name'] = "<p style='width: 74px' class='tooltipped' data-tooltip='Cantidad ordenada del 1/Sept a la fecha' data-position='top'>ORDENADO CA</p>";
             $json['columns'][9]['data'] = "CUMPLIMIENTO_CONTRATO_CA"; // % DE CUMPLIMIENTO
-            $json['columns'][9]['name'] = "<p class='tooltipped' data-position='top' data-tooltip='Porcentaje ordenado CA de acuerdo al avance del tiempo de contrato'>
+            $json['columns'][9]['name'] = "<p style='width: 218px' class='tooltipped' data-position='top' data-tooltip='Porcentaje ordenado CA de acuerdo al avance del tiempo de contrato'>
             % de cumplimiento contrato anual ca</p>";
             $json['columns'][10]['data'] = "PM6CA";
-            $json['columns'][10]['name'] = "<p class='tooltipped' data-position='top' data-tooltip='Promedio venta mensual CA últimos 6 meses'>"."pvm ca "."<br>"."(6 m)"."</p>";
+            $json['columns'][10]['name'] = "<p style='width: 70px' class='tooltipped' data-position='top' data-tooltip='Promedio venta mensual CA últimos 6 meses'>"."pvm ca (6 m)"."<br>".""."</p>";
             $json['columns'][11]['data'] = "PVM_6_PRIVATE";
-            $json['columns'][11]['name'] = "<p class='tooltipped' data-position='top' data-tooltip='Promedio venta mensual mercado privado de los últimos 6 meses'>"."pvm privado"."<br>"."(6 m)"."</p>"; 
+            $json['columns'][11]['name'] = "<p style='width: 110px' class='tooltipped' data-position='top' data-tooltip='Promedio venta mensual mercado privado de los últimos 6 meses'>"."pvm privado (6 m)"."<br>".""."</p>";
             $json['columns'][12]['data'] = "PVMP_12";
-            $json['columns'][12]['name'] = "<p class='tooltipped' data-position='top' data-tooltip='Promedio venta mensual mercado privado de los últimos 12 meses'>"."PVM"."<br>"." (12 m)"."</p>";  
+            $json['columns'][12]['name'] = "<p style='width: 58px' class='tooltipped' data-position='top' data-tooltip='Promedio venta mensual mercado privado de los últimos 12 meses'>"."PVM (12 m)"."<br>".""."</p>";
             $json['columns'][13]['data'] = "PVM_INP_6";
-            $json['columns'][13]['name'] = "<p class='tooltipped' data-position='top' data-tooltip='Promedio venta mensual mercado institucional público de los últimos 6 meses'>" . "pvm inst. publico"."<br>"." (6 m)"."</p>"; 
+            $json['columns'][13]['name'] = "<p style='width: 127px' class='tooltipped' data-position='top' data-tooltip='Promedio venta mensual mercado institucional público de los últimos 6 meses'>" . "pvm inst. publico (6 m)"."<br>"." "."</p>";
             $json['columns'][14]['data'] = "PVM_INSP_12M";
-            $json['columns'][14]['name'] = "<p class='tooltipped' data-position='top' data-tooltip='Promedio venta mensual mercado institucional público de los últimos 12 meses'>" . "pvm inst. publico"."<br>"." (12 m)"."</p>"; 
+            $json['columns'][14]['name'] = "<p style='width: 127px' class='tooltipped' data-position='top' data-tooltip='Promedio venta mensual mercado institucional público de los últimos 12 meses'>" . "pvm inst. publico (6 m)"."<br>"." "."</p>";
             $json['columns'][15]['data'] = "MESES_DISP";  
-            $json['columns'][15]['name'] = "<p class='tooltipped' data-tooltip='Meses disponibles' data-position='top'>meses disp.</p>";
-            $json['columns'][16]['data'] = "MESES_DISP_MAX";  
-            $json['columns'][16]['name'] = "<span style='padding:4em; display:none;'><a onclick='mostrarModal()' 
-                href='javascript:void(0)' class='tooltipped right blue-text' data-tooltip='Ver valor más alto'>
-                <i class='material-icons'>visibility</i>
-                </a></span>" ."meses disp. max";
+            $json['columns'][15]['name'] = "<p style='width: 62px' class='tooltipped' data-tooltip='Meses disponibles' data-position='top'>meses disp.</p>";
+            $json['columns'][16]['data'] = "MESES_DISP_MAX";
+            $json['columns'][16]['name'] = "<p style='width: 91px' class='tooltipped' data-tooltip='Meses disponibles Maximo' data-position='top'>meses disp. max.</p>";
             $json['columns'][17]['data'] = "PED_MIN";
-            $json['columns'][17]['name'] = "<p class='tooltipped' data-tooltip='Cantidad mínima que se puede pedir' data-position='top'>pedido min.</p>";
+            $json['columns'][17]['name'] = "<p style='width: 63px' class='tooltipped' data-tooltip='Cantidad mínima que se puede pedir' data-position='top'>pedido min.</p>";
             $json['columns'][18]['data'] = "Cant_Pedir";
-            $json['columns'][18]['name'] = "cantidad a pedir";
+            $json['columns'][18]['name'] = "<p style='width: 95px' class='tooltipped' data-tooltip='Cantidad a pedir' data-position='top'>cantidad a pedir</p>";
             echo json_encode($json);
             }
             //$this->sqlsrv->close();

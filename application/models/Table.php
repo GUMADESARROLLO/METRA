@@ -65,15 +65,15 @@ class Table extends CI_Model
 
                 $json['data'][$i]['ARTICULO'] = $fila['ARTICULO'];
                 $json['data'][$i]['DESCRIPCION'] = $fila['DESCRIPCION'];
-                $json['data'][$i]['TOTAL_EXISTENCIA'] = "<p style='margin-right:20px;' class='right'>". number_format($fila['TOTAL_EXISTENCIA'],2)."</p>";
+                $json['data'][$i]['TOTAL_EXISTENCIA'] = "<p style='margin-right:20px;' class='right'>". number_format($fila['TOTAL_EXISTENCIA'],0)."</p>";
                 $json['data'][$i]['CLASE_ABC'] = "<p class='center'>".$fila['CLASE_ABC']."</p>";
-                $json['data'][$i]['PM6CA'] = "<p style='margin-right:20px;' class='right'>".number_format(($fila['PM6CA']),2)."</p>";
-                $json['data'][$i]['PVM_6_PRIVATE'] = "<p style='margin-right:20px;' class='right'>".number_format($fila['PVM_6_PRIVATE'],2)."</p>";
-                $json['data'][$i]['PVMP_12'] = "<p style='margin-right:20px;' class='right'>".number_format( $fila['PVMP_12'],2)."</p>";
-                $json['data'][$i]['PVM_INP_6'] = "<p style='margin-right:20px;' class='right'>".number_format( $fila['PVM_INP_6'],2)."</p>";
-                $json['data'][$i]['PVM_INSP_12M'] = "<p style='margin-right:20px;' class='right'>".number_format( $fila['PVM_INSP_12M'],2)."</p>";   
-                $json['data'][$i]['MESES_DISP'] ="<p style='margin-right:20px;' class='right'>".number_format($fila['Mes_Disponible_6M'],2)."</p>";
-                $json['data'][$i]['MESES_DISP_MAX'] = "<p style='margin-right:20px;' class='right'>".$fila['Meses_Disponibles_Max']."</p>";
+                $json['data'][$i]['PM6CA'] = "<p style='margin-right:20px;' class='right'>".number_format(($fila['PM6CA']),0)."</p>";
+                $json['data'][$i]['PVM_6_PRIVATE'] = "<p style='margin-right:20px;' class='right'>".number_format($fila['PVM_6_PRIVATE'],0)."</p>";
+                $json['data'][$i]['PVMP_12'] = "<p style='margin-right:20px;' class='right'>".number_format( $fila['PVMP_12'],0)."</p>";
+                $json['data'][$i]['PVM_INP_6'] = "<p style='margin-right:20px;' class='right'>".number_format( $fila['PVM_INP_6'],0)."</p>";
+                $json['data'][$i]['PVM_INSP_12M'] = "<p style='margin-right:20px;' class='right'>".number_format( $fila['PVM_INSP_12M'],0)."</p>";   
+                $json['data'][$i]['MESES_DISP'] ="<p style='margin-right:20px;' class='right'>".number_format($fila['Mes_Disponible_6M'],0)."</p>";
+                $json['data'][$i]['MESES_DISP_MAX'] = "<p style='margin-right:20px;' class='right'>".number_format($fila['Meses_Disponibles_Max'],0)."</p>";
                 if ($fila['CLASE_ABC'] =="A" || $fila['CLASE_ABC']=="A" && $fila['CLASIFICACION_3'] =="018") {
                     if($fila['Color_Cantidad_Pedir'] == ''){
                         $json['data'][$i]['Cant_Pedir'] = "<p style='margin-right:20px;' class='right'>".number_format($fila["Cantidad_Pedir"], 0)."</p>";
@@ -99,21 +99,21 @@ class Table extends CI_Model
                     $json['data'][$i]['Cant_Pedir'] = "<p style='margin-right:20px;' class='right'>0</p>";
                 }
                       $json['data'][$i]['Pedido'] = 
-                      "<a style='margin-right:20px;' class='purple-text darken-4 right' href='#' onclick='ModalComentarios(".'"'.$fila['ARTICULO'].'","'.number_format($fila['Pedido'],2).'"'.","."0".")'>
-                      ".number_format ($fila['Pedido'],2)."</a>"; 
+                      "<a style='margin-right:20px;' class='purple-text darken-4 right' href='#' onclick='ModalComentarios(".'"'.$fila['ARTICULO'].'","'.number_format($fila['Pedido'],0).'"'.","."0".")'>
+                      ".number_format ($fila['Pedido'],0)."</a>"; 
 
                       $json['data'][$i]['Transito'] =  
-                      "<a style='margin-right:20px;' class='purple-text darken-4 right' href='#'  onclick='ModalComentarios(".'"'.$fila['ARTICULO'].'","'.number_format($fila['Transito'],2).'"'.","."1".")'>
-                      ".number_format ($fila['Transito'],2)."</a>"; 
+                      "<a style='margin-right:20px;' class='purple-text darken-4 right' href='#'  onclick='ModalComentarios(".'"'.$fila['ARTICULO'].'","'.number_format($fila['Transito'],0).'"'.","."1".")'>
+                      ".number_format ($fila['Transito'],0)."</a>"; 
 
                       $json['data'][$i]['Contrato_Anual_CA'] =
-                      "<a style='margin-right:20px;' class='purple-text darken-4 right' href='#'onclick='ModalComentarios(".'"'.$fila['ARTICULO'].'","'.number_format($fila['Contrato_Anual_CA'],2).'"'.","."3".")'>
-                      ".number_format ($fila['Contrato_Anual_CA'],2)."</a>"; 
+                      "<a style='margin-right:20px;' class='purple-text darken-4 right' href='#'onclick='ModalComentarios(".'"'.$fila['ARTICULO'].'","'.number_format($fila['Contrato_Anual_CA'],0).'"'.","."3".")'>
+                      ".number_format ($fila['Contrato_Anual_CA'],0)."</a>"; 
                     
                       $json['data'][$i]['Pendiente_Entrega_CA'] = 
-                      "<a style='margin-right:20px;' class='purple-text darken-4 right' href='#'onclick='ModalComentarios(".'"'.$fila['ARTICULO'].'","'.number_format($fila['PENDIENTE_ENTREGA'],0).'"'.","."2".")'>".number_format($fila['PENDIENTE_ENTREGA'],0,",","")."</a>";
+                      "<a style='margin-right:20px;' class='purple-text darken-4 right' href='#'onclick='ModalComentarios(".'"'.$fila['ARTICULO'].'","'.number_format($fila['PENDIENTE_ENTREGA'],0).'"'.","."2".")'>".number_format($fila['PENDIENTE_ENTREGA'],0)."</a>";
                       
-                      $json['data'][$i]['Ordenado_CA'] = "<p  style='margin-right:20px;' class='right'>".number_format ($fila['Ordenado_CA'],2)."</p>";
+                      $json['data'][$i]['Ordenado_CA'] = "<p  style='margin-right:20px;' class='right'>".number_format ($fila['Ordenado_CA'],0)."</p>";
                       //% de cumplimienmto
                       if($fila['COLOR_CUMPLIMIENTO'] == 'V'){
                         $json['data'][$i]['CUMPLIMIENTO_CONTRATO_CA'] ="<p style='color:green;' class='center-align negra'>".number_format($fila['CUMPLIMIENTO'], 0) . "%</p>";
@@ -121,10 +121,10 @@ class Table extends CI_Model
                         $json['data'][$i]['CUMPLIMIENTO_CONTRATO_CA'] = "<p style='color:red;' class='center-align negra'>" . number_format($fila['CUMPLIMIENTO'], 0) . "%</p>";
                       }
                       if($this->session->userdata('Permiso') == 3 && $this->session->userdata('IdUS') != "3"){
-                        $json['data'][$i]['PED_MIN'] = $fila['PED_MIN'];
+                        $json['data'][$i]['PED_MIN'] = number_format($fila['PED_MIN'],0);
                       }else{
-                        $json['data'][$i]['PED_MIN'] = "<a style='margin-right:20px;' class='purple-text darken-4 right' href='#' onclick='ModalComentarios(" . '"' . $fila['ARTICULO'] . '","' . $fila['PED_MIN'] . '"' . "," . "5" . ")'>
-                      " . $fila['PED_MIN'] . "</a>";
+                        $json['data'][$i]['PED_MIN'] = "<a style='margin-right:20px;' class='purple-text darken-4 right' href='#' onclick='ModalComentarios(" . '"' . $fila['ARTICULO'] . '","' . number_format($fila['PED_MIN'], 0) . '"' . "," . "5" . ")'>
+                      " . number_format($fila['PED_MIN'], 0) . "</a>";
                       }
                 $i++;
             }

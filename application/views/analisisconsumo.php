@@ -15,7 +15,7 @@ else{
   }
 }
 ?>
-<h5 class="center" id="loading" style='font-family:'robotoblack'; color:#616161;'>PROCESANDO DATOS...</h5>
+  <h5 class="center" id="loading" style='font-family:' robotoblack '; color:#616161;'>PROCESANDO DATOS...</h5>
   <br>
   <div class="center">
     <div class="preloader-wrapper big active" id="load">
@@ -35,35 +35,31 @@ else{
 
 
   <div class="noMargen Buscar row column">
-            <div class="col s1 m1 l1 offset-l3 offset-s1 offset-m2">
-                <i class="material-icons prefix" id="icon" style="display:none;">search</i>
-            </div>
-            <div class="input-field col s9 m7 l4">
-                <input id="searchReporte" type="text" placeholder="Buscar" style="display:none;">
-                <label for="searchReporte"></label>
-            </div>
-        </div>
-      <div class="container">
+    <div class="col s1 m1 l1 offset-l3 offset-s1 offset-m2">
+      <i class="material-icons prefix" id="icon" style="display:none;">search</i>
+    </div>
+    <div class="input-field col s9 m7 l4">
+      <input id="searchReporte" type="text" placeholder="Buscar" style="display:none;">
+      <label for="searchReporte"></label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="container">
       <div class="col s12">
-        <form action="<?php echo base_url("index.php/to_Excel")?>" method="post"  id="FormularioExportacion">
+        <form action="<?php echo base_url(" index.php/to_Excel ") ?>" method="post" id="FormularioExportacion">
           <input type="hidden" id="datos_a_enviar" name="datos_a_enviar">
-            <a style="display:none; float:right;" class="tooltipped" data-tooltip="Exportar a excel" data-position="left" href="#" id="excel">
-              <img src="<?php echo base_url();?>assets/images/logo_office_excel.png" alt="exportar a excel" class="responsive-img" width="40px">
+          <a style="display:none; float:right;" class="tooltipped" data-tooltip="Exportar a excel" data-position="left" href="#" id="excel">
+              <img src="<?php echo base_url(); ?>assets/images/logo_office_excel.png" alt="exportar a excel" class="responsive-img" width="40px">
             </a>
         </form>
       </div>
+    </div>
   </div>
 
-  <div class="row">
-
-
+  <div class="row" style="height:cover;">
     <!--tabla master-->
     <div class="col s12 m12 s12" style="overflow-x:auto;" id="card">
-      <div class="">
-        <div class="">
-          <div id="tbl">
-          </div>
-        </div>
+      <div id="tbl">
       </div>
     </div>
   </div>
@@ -92,23 +88,18 @@ else{
             <input type="hidden" id="com" name="com">
           </div>
           <div class="input-field col s12 m12 s12">
-              <input type="text" placeholder="Ingresar Pedido Mínimo" id="pedidomin" name="pedidomin"> 
-              <label for="lblpedidomin" id="lblpedidomin">Pedido Mínimo</label>
+            <input type="text" placeholder="Ingresar Pedido Mínimo" id="pedidomin" name="pedidomin">
+            <label for="lblpedidomin" id="lblpedidomin">Pedido Mínimo</label>
           </div>
-             <div class="input-field col s12 m12 s12">
-                <input type="text" placeholder="AGREGAR CANTIDAD" id="pedido" name="pedido"> 
-                <label for="lblpedido" id="lblpedido">Agregar Cantidad</label>
-             </div>
+          <div class="input-field col s12 m12 s12">
+            <input type="text" placeholder="AGREGAR CANTIDAD" id="pedido" name="pedido">
+            <label for="lblpedido" id="lblpedido">Agregar Cantidad</label>
+          </div>
         </div>
         <div class="row">
           <div class="input-field col s12 m12 s12">
             <textarea id="Comnet0" name="Comnet0" length="450" class="materialize-textarea" placeholder="ESCRIBA UN COMENTARIO"></textarea>
             <label for="Comnet0" id="lblComnet0">COMENTARIO</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12 m12 s12">
-            <input type="hidden" id="fecha" name="fecha" value="<?php date_default_timezone_set("America/Managua"); echo date("Y-m-d");?>">
           </div>
         </div>
         <br><br>
@@ -132,22 +123,22 @@ else{
   <!-- Modal Cantidades -->
   <div id="modalMax" class="modal" style="width:500px;">
     <div class="modal-content">
-        <div class="row">
-              <div class="right">
-                <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">
+      <div class="row">
+        <div class="right">
+          <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">
                   <img src="<?php echo base_url("Documents/JPG diseño visual/Icon/cerrar.png") ?>" alt="Cerrar" width="30px"></a>
-              </div>
         </div>
+      </div>
       <h4 class="center negra" style="color:midnightblue;" id="head1">VALOR MAS ALTO</h4>
-         <div class="row">
-               <div class="col s12 m12 s12">
-              <?php
+      <div class="row">
+        <div class="col s12 m12 s12">
+          <?php
               foreach ($valor as $key)
                 {
                 echo "<h2 class='blue-text negra center'>" . number_format($key['Valor_Max'],2) . "</h2>";
               }
               ?>
-        </div> 
-        </div> 
+        </div>
+      </div>
     </div>
   </div>

@@ -1,0 +1,82 @@
+body{
+  font-size: 10pt;
+}
+/*Search by Alder 21/04/2016*/
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url(/METRA2/assets/font/MaterialIcons-Regular.woff2) format('woff2'),
+       url(/METRA2/assets/font/MaterialIcons-Regular.woff) format('woff'),
+       url(/METRA2/assets/font/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+table thead tr th{
+  background-color: midnightblue;
+  font-size: 8pt;
+    color: white;
+    text-transform: uppercase;
+}
+
+table tr th .sorting_disabled{
+  margin: 100px;
+}
+
+#Comnet0::-webkit-input-placeholder
+{
+  color:rgba(45, 45, 139, 0.65);
+}
+
+#Comnet0:-moz-placeholder 
+{
+  color:rgba(45, 45, 139, 0.65);
+}
+
+#Comnet0::-moz-placeholder 
+{
+  color:rgba(45, 45, 139, 0.65);
+}
+
+#Comnet0:-ms-input-placeholder 
+{
+  color:rgba(45, 45, 139, 0.65);
+}
+
+
+.dataTables_wrapper .dataTables_filter label{
+    display: none;
+}
+.dataTables_wrapper .dataTables_length select{
+  display: block;
+  height: auto;
+  width: 190px;
+  margin-bottom: 20px;
+}
+
+#tblMaster thead tr th{
+  width: 300px;
+}

@@ -6,16 +6,16 @@ else{
     case 1:
     case 2:
     case 3:
-      echo "<h5 class='center' id='loaded' style='font-family:'robotoblack'; color:#616161; display:none;'><br>ARTICULOS Y TRANSITO</h5>";
+      echo "<h5 class='center' id='loaded' style='font-family:robotoblack; color:#616161; display:none;'><br>ARTICULOS Y TRANSITO</h5>";
       echo "<input type='hidden' id='usuarioConectado' name='usuarioConectado' value='".$_SESSION['IdUS']."'>";
       break;
     case 4:
-    echo "<h5 class='center' id='loaded' style='font-family:'robotoblack'; color:#616161; display:none;'><br>ANALISIS CONSUMO</h5>";
+    echo "<h5 class='center' id='loaded' style='font-family:robotoblack; color:#616161; display:none;'><br>ANALISIS CONSUMO</h5>";
       break;
   }
 }
 ?>
-  <h5 class="center" id="loading" style='font-family:' robotoblack '; color:#616161;'>PROCESANDO DATOS...</h5>
+  <h5 class="center" id="loading" style='font-family: robotoblack ; color:#616161;'>PROCESANDO DATOS...</h5>
   <br>
   <div class="center">
     <div class="preloader-wrapper big active" id="load">

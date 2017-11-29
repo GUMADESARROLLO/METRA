@@ -6,10 +6,16 @@
 class Sqlsrv
 {
 
-    public $serverName = "192.168.1.112";
-    public $dbname = "PRODUCCION";
+  public $dbname = "PRODUCCION";
+
+    public $serverName = "192.168.1.9";
+    public $user = "sa";
+    public $password = "Server2012!";
+
+  /*  public $serverName = "192.168.1.18";
     public $user = "dbomanager";
-    public $password = "Umk*.*@!";
+    public $password = "Umk*.*@!";*/
+    
     public $characterSet = "UTF-8";
     public $connection;
     protected $statement = null;
@@ -327,9 +333,9 @@ class Sqlsrv
     }
     function allgood(){
         if (($this -> getStatus())==1) {
-            $strg = "No Ahora Si la partisssss.";
+            $strg = $this->status;
         } else {
-            $strg = "Fuck!!!!! Algo Paso.";
+            $strg = $this->status;
         }
         return $strg;
     }

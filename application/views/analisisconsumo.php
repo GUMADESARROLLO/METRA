@@ -1,10 +1,7 @@
 <?php
 if(!isset($_SESSION['Permiso'])){
-}
-else{
+} else{
   switch ($_SESSION['Permiso']) {
-    case 1:
-    case 2:
     case 3:
       echo "<h5 class='center' id='loaded' style='font-family:robotoblack; color:#616161; display:none;'><br>ARTICULOS Y TRANSITO</h5>";
       echo "<input type='hidden' id='usuarioConectado' name='usuarioConectado' value='".$_SESSION['IdUS']."'>";
@@ -46,7 +43,7 @@ else{
   <div class="row">
     <div class="container">
       <div class="col s12">
-        <form action="<?php echo base_url(" index.php/to_Excel ") ?>" method="post" id="FormularioExportacion">
+        <form action="<?php echo base_url("index.php/to_Excel") ?>" method="post" id="FormularioExportacion">
           <input type="hidden" id="datos_a_enviar" name="datos_a_enviar">
           <a style="display:none; float:right;" class="tooltipped" data-tooltip="Exportar a excel" data-position="left" href="#" id="excel">
               <img src="<?php echo base_url(); ?>assets/images/logo_office_excel.png" alt="exportar a excel" class="responsive-img" width="40px">
@@ -107,7 +104,7 @@ else{
           <div class="center">
             <?php
               if($this->session->userdata('Permiso') != 2 && $this->session->userdata('Permiso') != 3){
-               echo' <a href="#!" class="modal-action modal-close waves-effect waves-light btn red">cerrar</a>';  
+               echo' <a href="#!" class="modal-action modal-close waves-effect waves-light btn red">cerrar</a>';
               }else{
                 echo '           
                 <button  id="actualizar" onclick="actualiza()" class="waves-effect waves-light btn blue">guardar</button>
@@ -119,6 +116,57 @@ else{
       </form>
     </div>
   </div>
+
+<div id="mdExistencia" class="modal">
+    <div class="progress" id="prgExistencia"><div class="indeterminate"></div></div>
+    <div class="modal-content">
+        <h5 id="tlArticulo" class="center"></h5>
+
+
+        <table id="idRowBodegas" class="table striped compact" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>LOTE</th>
+                    <th>FECHA DE VENCIMIETO</th>
+                    <th>CANTIDAD</th>
+                </tr>
+            </thead>
+            <tbody id="tblrow">
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+<div id="mdBodegas" class="modal">
+    <div class="progress" id="prgEBodega"><div class="indeterminate"></div></div>
+    <div class="modal-content">
+        <h5 id="tlArticulo_bodegas" class="center"></h5>
+
+
+        <table id="idBodegas" class="table striped compact" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>BODEGA</th>
+                <th>CANTIDAD</th>
+
+            </tr>
+            </thead>
+            <tbody id="tblrow">
+            <tr>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+            </tbody>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
 
   <!-- Modal Cantidades -->
   <div id="modalMax" class="modal" style="width:500px;">

@@ -183,6 +183,7 @@ table.display tr.odd.row_selected td {
 }
 thead,th{
      text-align: center;
+     font-family: "Open Sans";
 }
 #TblMaster thead tr th{
     background-color: #233778;
@@ -359,4 +360,13 @@ select
     padding: 1px;
     border-collapse: separate;
     border: 1px solid #28B1E7!important;
+}
+
+#tblBodega tbody > tr > td{
+    margin-right:20px;
+    float: right !important;
+}
+{
+    margin-right:20px;
+    float: right !important;
 }

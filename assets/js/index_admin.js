@@ -54,7 +54,7 @@ $('#tblAlvaro').DataTable({
             "next": "Anterior",
             "previous": "Siguiente"
         }
-    },
+    }
 });
 
 $('#Articulos').DataTable({
@@ -305,7 +305,10 @@ function MUP(key, per, FE, CONTRATO) {
     });
 };
 
+function getBodegas(){
 
+
+}
 function getMaster() {
 
     $("#tbl").html('');
@@ -396,6 +399,7 @@ function actualiza() {
         });
     }
 
+
     function ModalComentarios(ID, pedido, RowC) {
         $("#Arti").val(ID);
         $("#com").val(RowC);
@@ -477,6 +481,8 @@ function actualiza() {
               }
           });      
     }
+
+
 
     function exportExcelReport(tblMaster) {
         var tab_text = "<table border='2px'><tr>";

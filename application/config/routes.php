@@ -19,6 +19,10 @@ $route['Eliminar/(:any)']= "Usuarios/Eliminar/$1";
 
 $route['dashboard'] = 'Menu';
 $route['Articulos'] = 'Articulos';
+$route['BAT'] = 'Bat';
+
+$route['eBodegas/(:any)'] = 'Articulos/eBodegas/$1';
+$route['exiBodegas/(:any)'] = 'Articulos/exiBodegas/$1';
 
 /*************RUTAS EXCEL***********/
 $route['ExcelConsumo'] = 'reportes/ExecelConsumo';

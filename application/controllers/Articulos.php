@@ -39,6 +39,14 @@ class Articulos extends CI_Controller {
         $this->load->view('analisisconsumo',$data);
         $this->load->view('footer');
     }
+    public function eBodegas($id){
+
+        $this->Table->eBodegas($id);
+    }
+    public function exiBodegas($id){
+
+        $this->Table->exiBodegas($id);
+    }
 
     public function MasterDetalle(){
         $this->Table->Master();

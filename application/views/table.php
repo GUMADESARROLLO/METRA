@@ -4,6 +4,7 @@
 <h5 class="center" id="loading" style="font-family:'robotoblack'; color:#616161"><br>PROCESANDO DATOS...</h5>
 <h5 class="center" id="loaded" style="font-family:'robotoblack'; color:#616161; display:none;"><br>ARTICULOS & TRANSITO</h5>
 <br>
+
 <div class="center" >
   <div class="preloader-wrapper big active" id="load">
       <div class="spinner-layer spinner-blue-only">
@@ -27,5 +28,6 @@
             </div> 
         </div>
       </div>
-  </div>  
+  </div>
 </div>
+

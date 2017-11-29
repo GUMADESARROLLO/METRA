@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('sqlsrv','form_validation','seguridad','sqlsrv');
+$autoload['libraries'] = array('form_validation','seguridad','sqlsrv');
 
 /*
 | -------------------------------------------------------------------

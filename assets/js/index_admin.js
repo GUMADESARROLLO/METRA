@@ -2,14 +2,20 @@
 
 window.addEventListener("load",getMaster());
 $(document).ready(function () {
-   
-    
+
+
+
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal-trigger2').leanModal();
+
     $('#searchReporte').on( 'keyup', function () {
         var table = $('#tblMaster').DataTable();
         table.search(this.value).draw();
-       
+    });
+
+    $('#id_txt_Search').on( 'keyup', function () {
+        var table = $('#tblconsumoanual').DataTable();
+        table.search(this.value).draw();
     });
 
     $("#excel").click(function(event) {
@@ -91,6 +97,8 @@ $(document).ready(function () {
     $.extend($.fn.dataTable.defaults, {
         "bAutoWidth": true
     });
+
+
 
 
     var tableAlder = $('#tbArticulos').DataTable({

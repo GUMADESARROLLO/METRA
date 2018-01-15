@@ -370,3 +370,73 @@ select
     margin-right:20px;
     float: right !important;
 }
+input[type=text] {
+     background-color: #fff;
+     border: 1px solid #8b8b8b;
+     border-radius: 5px;
+     box-shadow: 0 2px 4px 0 rgba(0,0,0,.3);
+     color: #1c3643;
+     font-size: 15px;
+     font-family: 'robotoregular';
+     margin: 0 auto;
+     padding: 10px 10px 15px;
+     resize: none;
+     width: 100%;
+     height: 100%;
+ }
+#lg_usuario{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    border-radius: 0;
+    outline: none;
+    height: 1.5rem;
+    width: 100%;
+    font-size: 1rem;
+    margin: 0 0 15px 0;
+    padding: 0;
+    box-shadow: none;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    transition: all .3s;
+}
+#modalCantidad{
+    width:700px;
+}
+#modalAnualComentario{
+    width: 600px;
+}
+#addComment{
+    height: 15vh;
+    min-height: 8vh;
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 360px;
+    background-color: #fff;
+    border: 1px solid #8b8b8b;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .3);
+    color: #081e96;
+    font-size: 15px;
+    font-family: 'robotoregular';
+    margin: 0 auto;
+    padding: 10px 10px 15px;
+    resize: none;
+    width: 100%;
+    height: 100px;
+}
+
+
+.modal { width: 75% !important ; height: 75% !important ; }
+.grid-space {
+    /*border: 1px solid #eee;
+    margin: 7px 0;
+    text-align: center;
+    line-height: 50px;
+    font-size: 28px;
+    background-color: tomato;
+    color: white;
+    padding: 0;*/
+    margin: 7px 0;
+}

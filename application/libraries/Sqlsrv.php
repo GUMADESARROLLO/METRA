@@ -8,13 +8,13 @@ class Sqlsrv
 
   public $dbname = "PRODUCCION";
 
-    public $serverName = "192.168.1.9";
+   /* public $serverName = "192.168.1.9";
     public $user = "sa";
-    public $password = "Server2012!";
+    public $password = "Server2012!";*/
 
-  /*  public $serverName = "192.168.1.18";
+    public $serverName = "192.168.1.18";
     public $user = "dbomanager";
-    public $password = "Umk*.*@!";*/
+    public $password = "Umk*.*@!";
     
     public $characterSet = "UTF-8";
     public $connection;

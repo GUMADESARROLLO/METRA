@@ -2,7 +2,17 @@
 <html lang="en">
 <head>
 
-           <!--Import Google Icon Font localmente by Alder-->
+    <style type="text/css">
+        .txtSearch{
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/js/fuente.css" media="screen,projection">
     <script src="http://code.highcharts.com/highcharts.js"></script>
 
@@ -18,9 +28,12 @@
       
     <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>assets/media/css/jquery.dataTables.min.css" />
     <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>assets/css/sweetalert2.min.css"/>
+    <!--<link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>assets/css/chosen.css"/>-->
+    <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>assets/css/select2.min.css"/>
     <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>assets/css/index.css"  media="screen,projection"/> 
     <style type="text/css" media="screen">
-            
+
+
             select{
                 display: block;
                 height: auto;
@@ -35,6 +48,8 @@
             .Ancho {    
                 width: 5%;                
             }
+
     </style>
+
 </head>
 <body>

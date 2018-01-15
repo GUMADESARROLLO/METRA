@@ -10,6 +10,9 @@ $route['Salir'] = 'Login/Salir';
 $route['XLS'] = 'reportes/ExcelArticulos';
 $route['Detalles/(:any)'] = 'Articulos/Detalles/$1';
 $route['Consumo'] = 'Articulos/Consumo';
+$route['ANUAL'] = 'Articulos/get_ConsumoAnual';
+$route['UPDTANUAL'] = 'Articulos/UPDTANUAL';
+
 $route['VENCIDOS'] = 'Articulos/vencidos';
 
 $route['Usuarios'] = 'Usuarios';
@@ -41,6 +44,14 @@ $route['master']= "Articulos/MasterDetalle";
 $route['ActualizarComentario']= "Articulos/actualizarCom"; 
 $route['Excel']= "Articulos/to_Excel"; 
 $route['to_Excel']= "Articulos/toXLS";
-$route['RestoreComentario/(:any)/(:any)/(:any)'] = 'Articulos/RestoreComentario/$1/$2/$3';
+$route['ActualizarCantidad'] = 'Articulos/actualizarCantidad';
+$route['GetDatosModificacion/(:any)/(:any)'] = "Articulos/getDatosModificacion/$1/$2";
+$route['UpdateAnualComment'] = 'Articulos/updateAnualComment';
+$route['GuardaUnificadoAjax'] = 'Articulos/guardaUnificadoAjax';
+$route['dlt_item'] = 'Articulos/dlt_item';
+
+
+
+$route['RestoreCantidad/(:any)/(:any)'] = 'Articulos/restoreCantidad/$1/$2';
 
 $route['ultimaActualizacion/(:any)/(:any)'] = 'Articulos/ultimaActualizacion/$1/$2';

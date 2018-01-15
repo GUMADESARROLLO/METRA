@@ -33,7 +33,7 @@
 												<div class="row">
 													<div class="col-md-10 col-md-push-1">
 														<label class="floating-label" for="login-username">Usuario.</label>
-														<input class="form-control"  type="text" name="txtUsuario">
+														<input class="form-control"  type="text" id="lg_usuario" name="txtUsuario">
 													</div>
 												</div>
 											</div>											

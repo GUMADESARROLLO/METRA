@@ -3,12 +3,12 @@
  * @author [Cesar Mejia]
  * @email [analista4.guma@gmail.com]
  * @create date 2017-09-04 02:21:12
- * @modify date 2017-09-11 08:33:45
+ * @modify date 2017-12-19 10:09:32
  * @desc [description]
 */
 
 
-class Table extends CI_Model
+class Table extends CI_Model 
 {
 
     public function __construct()
@@ -147,6 +147,83 @@ class Table extends CI_Model
         }else{
             echo "Fuck!!!... Algo salio mal.";
         }
+    }
+    private function id_consecutivo($id){
+         $str="";
+         for ($it=0;$it<(5 - strlen($id));$it++)$str .="0";
+         return $str .= $id;
+    }
+    private function exis_unidad($D1,$D2,$D3){
+        if ($this->sqlsrv->allgood()) {
+            $q0 = $this->sqlsrv->fetchArray("SELECT dbo.EXISTENCIA_UNIDAD('".$D1."','".$D2."','".$D3."') AS EXISTENCIA_UNIDAD",SQLSRV_FETCH_ASSOC);
+            return $q0[0]['EXISTENCIA_UNIDAD'];
+        }else{
+            echo "Fuck!!!... Algo salio mal.";
+        }
+    }
+    public function UPDTANUAL()
+    {
+        if ($this->sqlsrv->allgood()) {
+            $query = $this->db->query("SELECT * FROM tblconsumoanual");
+            foreach($query->result_array() as $key){
+                $existencia_actual=$this->exis_unidad($key['COD_1'],$key['COD_2'],$key['COD_3']);
+                $this->db->where('COD_UNI', $key['COD_UNI']);
+                $Accion = $this->db->update('tblconsumoanual', array('EXISTENCIA_ACTUAL' => $existencia_actual));
+            }
+        }else{
+
+        }
+        echo $Accion;
+    }
+
+    public function get_ConsumoAnual()
+    {
+        $query = $this->db->query("SELECT * FROM tblconsumoanual");
+        $json = array();
+        $i = 0;
+        foreach($query->result_array() as $key){
+            $json['query'][$i]['COD_UNI']                       =   "CU-".$this->id_consecutivo($key['COD_UNI']);
+            $json['query'][$i]['COD_1']                         =   $key['COD_1'];
+            $json['query'][$i]['COD_2']                         =   $key['COD_2'];
+            $json['query'][$i]['COD_3']                         =   $key['COD_3'];
+            $json['query'][$i]['NOMBRE_GENERICO']               =   $key['NOMBRE_GENERICO'];
+            $json['query'][$i]['EXISTENCIA_ACTUAL']             =   number_format($key['EXISTENCIA_ACTUAL'],0);
+            //$json['query'][$i]['EXISTENCIA_ACTUAL']             =   "0";//number_format($this->exis_unidad($key['COD_1'],$key['COD_2'],$key['COD_3']),2);
+            $json['query'][$i]['TRANSITO']                      =   number_format($key['TRANSITO'],0);;
+            $json['query'][$i]['EXISTENCIA_BODEGA_DISCASA']     =   number_format($key['EXISTENCIA_BODEGA_DISCASA'],0);;
+            $json['query'][$i]['TRANSITO_BODEGA_DISCASA']       =   number_format($key['TRANSITO_BODEGA_DISCASA'],0);;
+            $json['query'][$i]['EXISTENCIA_DISP_PRIVADO']       =   number_format($key['EXISTENCIA_DISP_PRIVADO'],0);;
+            $json['query'][$i]['TRANSITO_DISP_PRIVADO']         =   number_format($key['TRANSITO_DISP_PRIVADO'],0);;
+            $json['query'][$i]['COMENTARIOS'] = $key['COMENTARIOS'];
+           // $json['query'][$i]['COMMIT']=$key['NOMBRE_GENERICO'];
+            $i++;
+
+        }
+        return $json;
+
+
+            /*if ($this->sqlsrv->allgood()) {
+                 $i=0;
+                 $json = array();
+                 $query = $this->sqlsrv->fetchArray("SELECT * FROM iweb_articulos",SQLSRV_FETCH_ASSOC);
+                 foreach($query as $key){
+                     $json['query'][$i]['C1']=$key['ARTICULO'];
+                     $json['query'][$i]['C1']=$key['ARTICULO'];
+                     $json['query'][$i]['C1']=$key['ARTICULO'];
+
+                     $json['query'][$i]['DESCRIPCION']=$key['DESCRIPCION'];
+                     $json['query'][$i]['total']=number_format($key['total'],2);
+                     $json['query'][$i]['TRANSITO']="";
+                     $json['query'][$i]['COMMIT']="";
+                     $i++;
+                 }
+                 return $json;
+                 $this->sqlsrv->close();
+             }else{
+                 echo "Fuck!!!... Algo salio mal.";
+             }
+             return $json;
+             $this->sqlsrv->close();*/
     }
 
     public function Master()
@@ -745,5 +822,134 @@ class Table extends CI_Model
         }
 
         echo json_encode($json);
+    }
+
+    /* nuevas funciones para consumo anual*/
+    public function actualizarCantidad($cod_uni,$cant,$idc)
+    {
+        $accion = "";$tipo = "";
+        $this->db->where("COD_UNI",$cod_uni);
+        if($idc == 0 )
+        {
+            $data = array(
+                "TRANSITO" => $cant
+            );
+            $accion = "Actualizo la cantidad de TRANSITO del unificado ". "CU-".$this->id_consecutivo($cod_uni);
+            $tipo= 0;
+        }
+        if ($idc == 1) {
+            $data = array(
+                "EXISTENCIA_BODEGA_DISCASA" => $cant
+            );
+            $accion = "Actualizo la cantidad de EXISTENCIA_BODEGA_DISCASA del unificado " . "CU-" . $this->id_consecutivo($cod_uni);
+            $tipo = 1;
+        }
+        if ($idc == 2) {
+            $data = array(
+                "TRANSITO_BODEGA_DISCASA" => $cant
+            );
+            $accion = "Actualizo la cantidad de TRANSITO_BODEGA_DISCASA del unificado " . "CU-" . $this->id_consecutivo($cod_uni);
+            $tipo = 2;
+        }
+        if ($idc == 3) {
+            $data = array(
+                "EXISTENCIA_DISP_PRIVADO" => $cant
+            );
+            $accion = "Actualizo la cantidad de EXISTENCIA_DISP_PRIVADO del unificado " . "CU-" . $this->id_consecutivo($cod_uni);
+            $tipo = 3;
+        }
+        if ($idc == 4) {
+            $data = array(
+                "TRANSITO_DISP_PRIVADO" => $cant
+            );
+            $accion = "Actualizo la cantidad de TRANSITO_DISP_PRIVADO del unificado " . "CU-" . $this->id_consecutivo($cod_uni);
+            $tipo = 4;
+        }
+        $this->db->update('tblconsumoanual', $data);
+        echo "se actualizo";
+
+        $data2 = array(
+            'IdUser' => $this->session->userdata("IdUS"),
+            'Articulo' => "CU-" . $this->id_consecutivo($cod_uni),
+            'Tipo' => $tipo,
+            'accion' => $accion,
+            'fecha' => date('Y-m-d H:i:s')
+        );
+        $this->db->insert('log', $data2);
+    }
+
+    public function updateAnualComment($cod_uni, $comentario)
+    {
+        $this->db->where("COD_UNI", $cod_uni);
+        $data = array(
+            "COMENTARIOS" => $comentario
+        );
+        $this->db->update('tblconsumoanual', $data);
+        echo "se actualizo";
+    }
+
+    public function getDatosModificacion($cod_uni, $tipo)
+    {
+        $query = $this->db->query("SELECT `Name`, MAX(fecha) as fecha FROM log_modificacion
+         WHERE Articulo = '".$cod_uni."' AND tipo = '".$tipo."' AND  IdUser = '".$this->session->userdata("IdUS")."' ");
+        $json = array();
+        if($query->num_rows() > 0){
+            foreach ($query->result_array() as $key) {
+                $data = array(
+                    "Name" => $key["Name"],
+                    "fecha" => $key["fecha"]
+                );
+                $json[] = $data;
+            }
+        }else{
+            $data = array(
+                    "Name" => "Sin datos",
+                    "fecha" => "Sin datos"
+                );
+                $json[] = $data;
+        }
+        echo json_encode($json);
+    }
+    public function dlt_item($uID)
+    {
+        $this->db->where('COD_UNI', $uID);
+        $this->db->delete('tblconsumoanual');
+    }
+
+    public function getArticulo()
+    {
+        $i = 0;
+        $json = array();
+        $query = $this->sqlsrv->fetchArray("SELECT * FROM iweb_articulos", SQLSRV_FETCH_ASSOC);
+        foreach ($query as $key) {
+            $json['query'][$i]['ARTICULO'] = $key['ARTICULO'];
+            $json['query'][$i]['DESCRIPCION'] = $key['DESCRIPCION'];
+            $i++;
+        }
+        return $json;
+        $this->sqlsrv->close();
+    }
+
+    public function guardaUnificado($cod_1, $cod_2, $cod_3, $generico,$flg,$id)
+    {
+        if ($flg=='nvo'){
+            $this->db->insert("tblconsumoanual", array(
+                "COD_1" => $cod_1,
+                "COD_2" => $cod_2,
+                "COD_3" => $cod_3,
+                "NOMBRE_GENERICO" => $generico
+            ));
+        }else{
+            $this->db->where("COD_UNI", $id);
+            $this->db->update('tblconsumoanual', array(
+                "COD_1" => $cod_1,
+                "COD_2" => $cod_2,
+                "COD_3" => $cod_3,
+                "NOMBRE_GENERICO" => $generico
+            ));
+
+        }
+
+
     }
 }
